@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f;
     public float horizontalInput = 0.0f;
-    public float forwardInput = 0.0f;
+    public float verticalInput = 0.0f;
     public float turnSpeed;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,6 @@ public class PlayerController : MonoBehaviour
         // use karna hai so in this case we are using horizontal. I will make for vertical now too
         horizontalInput = Input.GetAxis("Horizontal");
 
-        // For forwardInput
-        forwardInput = Input.GetAxis("Vertical");
-
         // We'll move the vehicle forward
         // transform.Translate(0, 0, 1);
         /* 
@@ -34,11 +31,7 @@ public class PlayerController : MonoBehaviour
         // You would be getting different frames
         // Let's see a method where let's control this thing . we will use vector3.forward but just we 
         // will multiply with time now.
-        // transform.Translate(Vector3.forward * Time.deltaTime*speed);
-
-        // Pehle upar waale case mein  it moves forward without pressing any key
-        // now we will work on a similar approach but use keys now
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        transform.Translate(Vector3.forward * Time.deltaTime*speed);
 
         //We are adding some turn speed now so that vehicles can move left or right now
         transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
