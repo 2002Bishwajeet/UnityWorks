@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5.0f;
-    public float horizontalInput = 0.0f;
-    public float forwardInput = 0.0f;
-    public float turnSpeed;
+    private const float speed = 20.0f;
+    private const float turnSpeed= 45.0f;
+    private float horizontalInput;
+    private float forwardInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +41,11 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
         //We are adding some turn speed now so that vehicles can move left or right now
-        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
+        //  transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
+
+        // Now the issue is the vehicle is sliding instead of rotating. Let's do something about it
+        //Vector3.up is Y axis
+        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
 
 
     }
